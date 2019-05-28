@@ -67,7 +67,7 @@ class Heli(object):
 
         assert self.__connection_up is True
 
-        Heli.__LOGGER.info("Read to go!")
+        Heli.__LOGGER.info("Ready to go!")
         return True
 
     def send(self):
