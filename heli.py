@@ -38,15 +38,15 @@ class Heli(object):
                     read_str = ser_bytes.decode('utf-8').strip()
 
                     if read_str == "READY":
-                        with self.__available:
+                        with my_heli.__available:
                             my_heli.__connection_up = True
-                            self.__available.notify()
+                            my_heli.__available.notify()
                 except:
                     Heli.__LOGGER.warn("Error while working with the serial connection", exc_info=1)
 
-                    with self.__available:
+                    with my_heli.__available:
                         my_heli.__connection_up = None
-                        self.__available.notify()
+                        my_heli.__available.notify()
 
         t = Thread(target=f, daemon=True,)
         t.start()
