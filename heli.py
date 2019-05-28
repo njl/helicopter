@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import serial, sys, time, os
-import struct
 import logging
 from threading import Thread, Condition
 
@@ -31,7 +30,7 @@ class Heli(object):
 
         ser = self.__serial_connection
         my_heli = self
-        # ser_bytes = ser.readline()
+
         def f():
             while my_heli.__connection_up is False:
                 try:
