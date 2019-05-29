@@ -13,7 +13,7 @@ byte sendPacket(byte cmds[]){
   markL = 77;
   countP = 4;
   countR = 8;
-  
+
   one = 0;
   zero = 0;
 
@@ -80,6 +80,8 @@ void setup(){
     digitalWrite(STATUS, LOW);
     pinMode(LED, OUTPUT);
     digitalWrite(LED, HIGH);
+    // this lets the client know that the serial connection is ready
+    Serial.println("READY");
 }
 
 
@@ -89,7 +91,11 @@ void serialEvent(){
     }
     for(int i=0; i < 4; ++i){
         cmds[i] = Serial.read();
+        // this would allow us to build an ACK mode later
+        Serial.print(cmds[i]);
+        Serial.print(",");
     }
+    Serial.println();
 }
 
 void loop(){
